@@ -1,6 +1,6 @@
 # Jekyll-Image-Size
 
-This Jekyll pluging provides a tag that reads the image-size of a static asset and outputs it in your template. I'm building it specifically to generate the og-image-width and og-image-height opengraph tags, but it has so many other uses.
+This Jekyll pluging provides a tag that reads the image-size of a static asset and outputs it in your template in one of many optional formats. I'm building it specifically to generate the og:image:width and og:image:height opengraph tags, but it has so many other uses.
 
 ## Installation
 
@@ -29,7 +29,7 @@ plugins: [jekyll-image-size]
 
 ## File Types Supported
 
-Jekyll-image-size uses the fastimage gem. It supports every type fastimage support. As of right now, that means:
+Jekyll-image-size uses the fastimage gem. It supports every type [fastimage](https://github.com/sdsykes/fastimage) support. As of right now, that means:
 
 ```
 gif, jpeg, png, tiff, bmp, ico, cur, psd, svg, webp
@@ -41,20 +41,21 @@ gif, jpeg, png, tiff, bmp, ico, cur, psd, svg, webp
 The `imagesize` takes one parameter. That parameter has the form:
 
 ```
-imageSource[:mode[/divide-by-number]][ rest...]
+imageSource[:format[/divide-by-number]][ rest...]
 
 imageSource is a string and can be one of:
   url
   file (rooted in the project root)
   Liquid/Jekyll context-variable name
 
-modes:
+formats:
   size:       WxH
   width:      W
   height:     H
   css:        width: Wpx; height: Hpx;
   props:      width='W' height='H'
   opengraph:  <meta property='og:image:width' content='W'/><meta property='og:image:height' content='H'/>
+  img:        <img src='/assets/logo.jpg' width='350' height='32'>
 
 divide-by-numbers:
   integer:    2
@@ -62,12 +63,12 @@ divide-by-numbers:
 
 rest:
   - must start with a space
-  - only used for the "img" tag mode
+  - only used for the "img" tag format
   - appended to the end of the img-tag just before the ">".
 ```
 
 ```
-# modes
+# formats
 {% imagesize imageSource %}           # 652x435
 {% imagesize imageSource:size %}      # 652x435
 {% imagesize imageSource:size/2 %}    # 326x218
@@ -76,7 +77,7 @@ rest:
 {% imagesize imageSource:css %}       # width: 652px; height: 435px;
 {% imagesize imageSource:props %}     # width='652' height='435'
 {% imagesize imageSource:opengraph %} # <meta property='og:image:width' content='350'/><meta property='og:image:height' content='32'/>
-{% imagesize imageSource:img %}       # <img src='spec/data/test.png' width='350' height='32'>
+{% imagesize imageSource:img %}       # <img src='/assets/logo.jpg' width='350' height='32'>
 
 # imageSource examples
 {% imagesize /assets/logo.jpg %}
@@ -88,7 +89,7 @@ rest:
 {% imagesize /assets/logo.jpg:css/2 %}
 {% imagesize image:width/2.5 %}
 {% imagesize imageSource:img alt='my alt string' %}
-# <img src='spec/data/test.png' width='350' height='32' alt='my alt string'>
+# <img src='/assets/logo.jpg' width='350' height='32' alt='my alt string'>
 
 ```
 
