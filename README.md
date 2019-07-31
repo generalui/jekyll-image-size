@@ -42,33 +42,40 @@ The `imagesize` takes one parameter. That parameter has the form:
 
 ```
 imageSource[:format[/divide-by-number]][ rest...]
+```
 
 imageSource is a string and can be one of:
-  url
-  file (rooted in the project root)
-  Liquid/Jekyll context-variable name
+
+* url
+* file (rooted in the project root)
+* Liquid/Jekyll context-variable name
 
 formats:
-  size:       WxH
-  width:      W
-  height:     H
-  css:        width: Wpx; height: Hpx;
-  props:      width='W' height='H'
-  opengraph:  <meta property='og:image:width' content='W'/><meta property='og:image:height' content='H'/>
-  img:        <img src='/assets/logo.jpg' width='350' height='32'>
+
+* size:       `WxH`
+* width:      `W`
+* height:     `H`
+* css:        `width: Wpx; height: Hpx;`
+* props:      `width='W' height='H'`
+* opengraph:  `<meta property='og:image:width' content='W'/><meta property='og:image:height' content='H'/>`
+* img:        `<img src='/assets/logo.jpg' width='350' height='32'>`
 
 divide-by-numbers:
-  integer:    2
-  float:      2.5 or 0.5 or .5
+
+* integer:    2
+* float:      2.5 or 0.5 or .5
 
 rest:
-  - must start with a space
-  - only used for the "img" tag format
-  - appended to the end of the img-tag just before the ">".
-```
 
-```
-# formats
+* must start with a space
+* only used for the "img" tag format
+* appended to the end of the img-tag just before the ">".
+
+## Examples
+
+Format examples:
+
+```html
 {% imagesize imageSource %}           # 652x435
 {% imagesize imageSource:size %}      # 652x435
 {% imagesize imageSource:size/2 %}    # 326x218
@@ -78,19 +85,24 @@ rest:
 {% imagesize imageSource:props %}     # width='652' height='435'
 {% imagesize imageSource:opengraph %} # <meta property='og:image:width' content='350'/><meta property='og:image:height' content='32'/>
 {% imagesize imageSource:img %}       # <img src='/assets/logo.jpg' width='350' height='32'>
+```
 
-# imageSource examples
+Image source examples:
+
+```html
 {% imagesize /assets/logo.jpg %}
 {% assign image = site.image %}
 {% imagesize image %}
+```
 
-# combined examples
+Combined examples:
+
+```html
 {% imagesize /assets/logo.jpg:opengraph %}
 {% imagesize /assets/logo.jpg:css/2 %}
 {% imagesize image:width/2.5 %}
-{% imagesize imageSource:img alt='my alt string' %}
-# <img src='/assets/logo.jpg' width='350' height='32' alt='my alt string'>
-
+{% imagesize /assets/logo.jpg:img alt='my alt string' %}
+  # <img src='/assets/logo.jpg' width='350' height='32' alt='my alt string'>
 ```
 
 ## License
