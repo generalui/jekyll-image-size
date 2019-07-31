@@ -92,6 +92,10 @@ rest:
 
 ```
 
-### License
+## License
 
-jekyll-imae-size is [MIT licensed](./LICENSE).
+jekyll-image-size is [MIT licensed](./LICENSE).
+
+## Produced By
+
+jekyll-image-size was produced at [GenUI.co](https://www.genui.co).
