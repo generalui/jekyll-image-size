@@ -21,12 +21,14 @@ class ImageSizeTag < Liquid::Tag
       raise ImageSizeError.new "invalid imagesize parameter: #{content}"
     end
 
-    source.sub!(/^\//, '')
+    rawSource = source
+
+    source = source.sub(/^\//, '')
 
     size = FastImage.size(source)
     if context && !size
-      if contextSource = context[source]
-        contextSource.sub!(/^\//, '')
+      if contextSource = rawSource = context[source]
+        contextSource = contextSource.sub(/^\//, '')
         size = FastImage.size(contextSource)
       end
     end
@@ -45,12 +47,15 @@ class ImageSizeTag < Liquid::Tag
     end
 
     case if mode then mode.downcase else nil end
-    when "opengraph"  then
+    when "opengraph"
       if size then "<meta property='og:image:width' content='#{width}'/><meta property='og:image:height' content='#{height}'/>"
       else "" end
 
+    when "img"        then
+      if size then "<img src='#{rawSource}' width='#{width}' height='#{height}'#{rest}>"
+      else "" end
+
     when "width"      then width.to_s
-    when "img"        then if size then "<img src='#{source}' width='#{width}' height='#{height}'#{rest}>" else "" end
     when "height"     then height.to_s
     when "css"        then if size then "width: #{width}px; height: #{height}px;" else "" end
     when "props"      then if size then "width='#{width}' height='#{height}'" else "" end

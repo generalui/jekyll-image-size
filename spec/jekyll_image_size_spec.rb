@@ -53,7 +53,7 @@ RSpec.describe ImageSizeTag, ".getImageSize" do
 
     it "returns <img...> with :img" do
       expect(ImageSizeTag.getImageSize("/spec/data/test.png:img alt='Hi team'")).to eq(
-        "<img src='spec/data/test.png' width='350' height='32' alt='Hi team'>"
+        "<img src='/spec/data/test.png' width='350' height='32' alt='Hi team'>"
       )
     end
 
