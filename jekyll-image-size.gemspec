@@ -9,9 +9,18 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Shane Brinkman-Davis Delamore"]
   spec.email         = ["shane@genui.com"]
 
-  spec.summary       = "jekyll tag plugin to insert the image-width and image-height of any static asset"
-  spec.description   = "jekyll tag plugin to insert the image-width and image-height of any static asset"
-  spec.homepage      = "https://github.com/shanebdavis/jekyll-image-size"
+  spec.summary       = "Jekyll tag-plugin to read image sizes from static assets and output in many formats."
+  spec.description   = <<ENDDESC
+Jekyll tag-plugin to read image sizes from static assets and output in many formats.
+
+Uses:
+
+* generate your opengraph og:image:height and og:image:width tags
+* IMG tags for retina-resolution assets (@2x, @3x, etc...)
+* Generate CSS or HTML width/height props
+* or just output `width`, `height` or `width + "x" + height`
+ENDDESC
+  spec.homepage      = "https://github.com/generalui/jekyll-image-size"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

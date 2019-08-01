@@ -1,6 +1,6 @@
-# Jekyll-Image-Size ![travis-ci.org](https://travis-ci.org/generalui/jekyll-image-size.svg)
+# Jekyll-Image-Size ![travis-ci.org](https://travis-ci.org/generalui/jekyll-image-size.svg) [![Gem Version](https://badge.fury.io/rb/jekyll-image-size.svg)](https://badge.fury.io/rb/jekyll-image-size)
 
-Jekyll tag-plugin to read image sizes from a static asset and output them in one of many formats.
+Jekyll tag-plugin to read image sizes from static assets and output in many formats.
 
 Uses:
 
