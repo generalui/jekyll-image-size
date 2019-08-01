@@ -13,12 +13,8 @@ Gem::Specification.new do |spec|
   spec.description   = <<ENDDESC
 Jekyll tag-plugin to read image sizes from static assets and output in many formats.
 
-Uses:
-
-* generate your opengraph og:image:height and og:image:width tags
-* IMG tags for retina-resolution assets (@2x, @3x, etc...)
-* Generate CSS or HTML width/height props
-* or just output `width`, `height` or `width + "x" + height`
+Generate your opengraph link-tags, img-tags, css or html props, or just output the width and height of an image. All output image-sizes
+can be scaled for retina support (/2 for @2x retina, /3 for @3x, etc...).
 ENDDESC
   spec.homepage      = "https://github.com/generalui/jekyll-image-size"
   spec.license       = "MIT"
