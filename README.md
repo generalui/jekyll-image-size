@@ -24,9 +24,7 @@ width='652' height='435'
 Add this line to your Gemfile:
 
 ```ruby
-group :jekyll_plugins do
-  gem "jekyll-image-size"
-end
+gem "jekyll-image-size"
 ```
 
 And then execute:
