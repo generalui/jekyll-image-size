@@ -1,5 +1,7 @@
 # Jekyll-Image-Size ![travis-ci.org](https://travis-ci.org/generalui/jekyll-image-size.svg) [![Gem Version](https://badge.fury.io/rb/jekyll-image-size.svg)](https://badge.fury.io/rb/jekyll-image-size)
 
+<img src="spec/data/test.jpg">
+
 Jekyll tag-plugin to read image sizes from static assets and output in many formats.
 
 Uses:
@@ -51,7 +53,7 @@ gif, jpeg, png, tiff, bmp, ico, cur, psd, svg, webp
 The `imagesize` takes one parameter. That parameter has the form:
 
 ```
-source[:format[/divide-by-number]][ rest...]
+source[:format[/divide-by-number]][?uri-encoded-params][ rest...]
 ```
 
 source is a string and can be one of:
@@ -78,6 +80,11 @@ divide-by-numbers:
 * integer:    2
 * float:      2.5 or 0.5 or .5
 
+uri-encoded-params:
+
+* width=123: fix the width to the given pixels and scale the height proportionally
+* height=123: fix the height to the given pixels and scale the width proportionally
+
 rest:
 
 * must start with a space
@@ -94,13 +101,20 @@ Format examples:
 {% imagesize source:json %}      >> {width: 652, height: 435}
 {% imagesize source:array %}     >> [652, 435]
 {% imagesize source:list %}      >> 652, 435
-{% imagesize source:size/2 %}    >> 326x218
 {% imagesize source:width %}     >> 652
 {% imagesize source:height %}    >> 435
 {% imagesize source:css %}       >> width: 652px; height: 435px;
 {% imagesize source:props %}     >> width='652' height='435'
 {% imagesize source:opengraph %} >> <meta property='og:image:width' content='350'/><meta property='og:image:height' content='32'/>
 {% imagesize source:img %}       >> <img src='/assets/logo.jpg' width='350' height='32'>
+```
+
+Scaling examples:
+
+```html
+{% imagesize source:size/2 %}    >> 326x218
+{% imagesize source:size?width=600 %}   >> 600x400
+{% imagesize source:size?height=200 %}  >> 300x200
 ```
 
 Image source examples:
@@ -117,6 +131,7 @@ Combined examples:
 {% imagesize /assets/logo.jpg:opengraph %}
 {% imagesize /assets/logo.jpg:css/2 %}
 {% imagesize image:width/2.5 %}
+{% imagesize image:height?width=500 %}
 {% imagesize /assets/logo.jpg:img alt='my alt string' %}
   # <img src='/assets/logo.jpg' width='350' height='32' alt='my alt string'>
 ```

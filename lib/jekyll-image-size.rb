@@ -1,5 +1,6 @@
 require "jekyll"
 require 'fastimage'
+require 'cgi'
 require "jekyll-image-size/version"
 
 class ImageSizeError < StandardError; end
@@ -14,9 +15,12 @@ class ImageSizeTag < Liquid::Tag
   end
 
   def self.getImageSize(content, context = nil)
-    if m = content.match(/^((?:[^:!]|:[^a-z])+)(?::([a-z]+)(?:\/((?:\d+|(?=\.))(?:\.\d+)?))?)?(\!)?( .*)?$/i)
-      source, mode, scale, required, rest = m.captures
+    if m = content.match(/^((?:[^?:!]|:[^a-z])+)(?::([a-z]+)(?:\/((?:\d+|(?=\.))(?:\.\d+)?))?)?(\!)?(?:\?(.+))?( .*)?$/i)
+      source, mode, scale, required, params, rest = m.captures
 
+      if params
+        params = CGI::parse(params)
+      end
     else
       raise ImageSizeError.new "invalid imagesize parameter: #{content}"
     end
@@ -38,6 +42,19 @@ class ImageSizeTag < Liquid::Tag
     else
       raise ImageSizeError.new "image file not found: #{source}" if required
       width = height = 0
+    end
+
+    if params
+      aspect_ratio = width.to_f / height.to_f
+      if v = params["width"][0]
+        width = v.to_i
+        height = (width / aspect_ratio).round
+
+      elsif v = params["height"][0]
+        height = v.to_i
+        width = (height * aspect_ratio).round
+
+      end
     end
 
     if scale

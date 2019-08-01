@@ -101,6 +101,14 @@ RSpec.describe ImageSizeTag, ".getImageSize" do
       expect(ImageSizeTag.getImageSize("/spec/data/test.png:size/2")).to eq("175x16")
     end
 
+    it "returns proportional height with ?width=200" do
+      expect(ImageSizeTag.getImageSize("/spec/data/test.png?width=200")).to eq("200x18")
+    end
+
+    it "returns proportional width with ?height=48" do
+      expect(ImageSizeTag.getImageSize("/spec/data/test.png?height=48")).to eq("525x48")
+    end
+
     it "returns width/2 with :width/2" do
       expect(ImageSizeTag.getImageSize("/spec/data/test.png:width/2")).to eq("175")
     end
