@@ -63,6 +63,9 @@ source is a string and can be one of:
 formats:
 
 * size:       `WxH`
+* json:       `{width: W, height: H}`
+* array:       `[W, H]`
+* list:       `W, H`
 * width:      `W`
 * height:     `H`
 * css:        `width: Wpx; height: Hpx;`
@@ -88,6 +91,9 @@ Format examples:
 ```html
 {% imagesize source %}           >> 652x435
 {% imagesize source:size %}      >> 652x435
+{% imagesize source:json %}      >> {width: 652, height: 435}
+{% imagesize source:array %}     >> [652, 435]
+{% imagesize source:list %}      >> 652, 435
 {% imagesize source:size/2 %}    >> 326x218
 {% imagesize source:width %}     >> 652
 {% imagesize source:height %}    >> 435

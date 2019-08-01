@@ -59,6 +59,9 @@ class ImageSizeTag < Liquid::Tag
     when "height"     then height.to_s
     when "css"        then if size then "width: #{width}px; height: #{height}px;" else "" end
     when "props"      then if size then "width='#{width}' height='#{height}'" else "" end
+    when "json"       then "{width: #{width}, height: #{height}}"
+    when "array"      then "[#{width}, #{height}]"
+    when "list"       then "#{width}, #{height}"
     when "size", nil  then "#{width}x#{height}"
     else raise ImageSizeError.new "invalid imagesize mode: #{mode}"
     end

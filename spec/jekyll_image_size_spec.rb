@@ -57,6 +57,17 @@ RSpec.describe ImageSizeTag, ".getImageSize" do
       )
     end
 
+    it "returns [w, h] for :array" do
+      expect(ImageSizeTag.getImageSize("/spec/data/test.png:array")).to eq("[350, 32]")
+    end
+
+    it "returns {width: w, height: h} for :json" do
+      expect(ImageSizeTag.getImageSize("/spec/data/test.png:json")).to eq("{width: 350, height: 32}")
+    end
+
+    it "returns w, h for :list" do
+      expect(ImageSizeTag.getImageSize("/spec/data/test.png:list")).to eq("350, 32")
+    end
   end
 
   context "source-locations:" do
