@@ -27,19 +27,11 @@ Add this line to your Gemfile:
 gem "jekyll-image-size"
 ```
 
-And then execute:
-
-    $ bundle
-
-Alternatively install the gem yourself as:
-
-    $ gem install jekyll-image-size
-
 and put this in your ``_config.yml``
 
 ```yaml
-plugins: [jekyll-image-size]
- # This will require each of these gems automatically.
+plugins:
+  - image-size
 ```
 
 ## File Types Supported
