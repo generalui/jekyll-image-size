@@ -1,4 +1,4 @@
-# Jekyll-Image-Size
+# Jekyll-Image-Size ![travis-ci.org](https://travis-ci.org/generalui/jekyll-image-size.svg)
 
 Jekyll tag-plugin to read image sizes from a static asset and output them in one of many formats.
 
