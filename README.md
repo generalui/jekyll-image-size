@@ -1,6 +1,23 @@
 # Jekyll-Image-Size
 
-This Jekyll pluging provides a tag that reads the image-size of a static asset and outputs it in your template in one of many optional formats. I'm building it specifically to generate the og:image:width and og:image:height opengraph tags, but it has so many other uses.
+Jekyll tag-plugin to read image sizes from a static asset and output them in one of many formats.
+
+Uses:
+
+* generate your opengraph og:image:height and og:image:width tags
+* IMG tags for retina-resolution assets (@2x, @3x, etc...)
+
+Example outputs:
+
+```
+652x435
+652
+435
+width: 652px; height: 435px;
+width='652' height='435'
+<meta property='og:image:width' content='350'/><meta property='og:image:height' content='32'/>
+<img src='/assets/logo.jpg' width='350' height='32'>
+```
 
 ## Installation
 
