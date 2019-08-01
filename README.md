@@ -6,16 +6,19 @@ Uses:
 
 * generate your opengraph og:image:height and og:image:width tags
 * IMG tags for retina-resolution assets (@2x, @3x, etc...)
+* Generate CSS or HTML width/height props
+* or just output `width`, `height` or `width + "x" + height`
 
-Example outputs:
+Samples:
 
-```
-652x435
-652
-435
-width: 652px; height: 435px;
-width='652' height='435'
+```html
+{% imagesize image:width %}
+350
+
+{% imagesize image:opengraph %}
 <meta property='og:image:width' content='350'/><meta property='og:image:height' content='32'/>
+
+{% imagesize image:img %}
 <img src='/assets/logo.jpg' width='350' height='32'>
 ```
 
@@ -48,10 +51,10 @@ gif, jpeg, png, tiff, bmp, ico, cur, psd, svg, webp
 The `imagesize` takes one parameter. That parameter has the form:
 
 ```
-imageSource[:format[/divide-by-number]][ rest...]
+source[:format[/divide-by-number]][ rest...]
 ```
 
-imageSource is a string and can be one of:
+source is a string and can be one of:
 
 * url
 * file (rooted in the project root)
@@ -65,7 +68,7 @@ formats:
 * css:        `width: Wpx; height: Hpx;`
 * props:      `width='W' height='H'`
 * opengraph:  `<meta property='og:image:width' content='W'/><meta property='og:image:height' content='H'/>`
-* img:        `<img src='/assets/logo.jpg' width='350' height='32'>`
+* img:        `<img src='/assets/logo.jpg' width='W' height='H'>`
 
 divide-by-numbers:
 
@@ -83,15 +86,15 @@ rest:
 Format examples:
 
 ```html
-{% imagesize imageSource %}           # 652x435
-{% imagesize imageSource:size %}      # 652x435
-{% imagesize imageSource:size/2 %}    # 326x218
-{% imagesize imageSource:width %}     # 652
-{% imagesize imageSource:height %}    # 435
-{% imagesize imageSource:css %}       # width: 652px; height: 435px;
-{% imagesize imageSource:props %}     # width='652' height='435'
-{% imagesize imageSource:opengraph %} # <meta property='og:image:width' content='350'/><meta property='og:image:height' content='32'/>
-{% imagesize imageSource:img %}       # <img src='/assets/logo.jpg' width='350' height='32'>
+{% imagesize source %}           >> 652x435
+{% imagesize source:size %}      >> 652x435
+{% imagesize source:size/2 %}    >> 326x218
+{% imagesize source:width %}     >> 652
+{% imagesize source:height %}    >> 435
+{% imagesize source:css %}       >> width: 652px; height: 435px;
+{% imagesize source:props %}     >> width='652' height='435'
+{% imagesize source:opengraph %} >> <meta property='og:image:width' content='350'/><meta property='og:image:height' content='32'/>
+{% imagesize source:img %}       >> <img src='/assets/logo.jpg' width='350' height='32'>
 ```
 
 Image source examples:
