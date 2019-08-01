@@ -1,7 +1,5 @@
 # Jekyll-Image-Size ![travis-ci.org](https://travis-ci.org/generalui/jekyll-image-size.svg) [![Gem Version](https://badge.fury.io/rb/jekyll-image-size.svg)](https://badge.fury.io/rb/jekyll-image-size)
 
-<img src="spec/data/test.jpg">
-
 Jekyll tag-plugin to read image sizes from static assets and output in many formats.
 
 Uses:
@@ -82,8 +80,8 @@ divide-by-numbers:
 
 uri-encoded-params:
 
-* width=123: fix the width to the given pixels and scale the height proportionally
-* height=123: fix the height to the given pixels and scale the width proportionally
+* width=123: set the width to the given pixels and scale the height proportionally
+* height=123: set the height to the given pixels and scale the width proportionally
 
 rest:
 
