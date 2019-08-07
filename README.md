@@ -144,4 +144,4 @@ jekyll-image-size is [MIT licensed](./LICENSE).
 
 ## Produced By
 
-jekyll-image-size was produced at [GenUI.co](https://www.genui.co).
+jekyll-image-size was [developed in Ruby at GenUI.co](https://www.genui.co).
