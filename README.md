@@ -24,17 +24,17 @@ Samples:
 
 ## Installation
 
-Add this to your Gemfile:
+Install this gem:
 
 ```ruby
-# using basic ruby-gems
+# via: ruby-gems
 gem install jekyll-image-size
 
-# OR using bundler
+# OR via: bundler
 bundle add jekyll-image-size
 ```
 
-Add this to your _config.yml:
+Add id to your [jekyll _config.yml](https://jekyllrb.com/docs/configuration/):
 
 ```yaml
 plugins:
