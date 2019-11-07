@@ -38,7 +38,7 @@ Add id to your [jekyll _config.yml](https://jekyllrb.com/docs/configuration/):
 
 ```yaml
 plugins:
-  - image-size
+  - jekyll-image-size
 ```
 
 ## File Types Supported
