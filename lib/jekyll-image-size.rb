@@ -32,7 +32,7 @@ class ImageSizeTag < Liquid::Tag
     size = FastImage.size(source)
     if context && !size
       if contextSource = rawSource = context[source]
-        contextSource = contextSource.sub(/^\//, '')
+        contextSource = contextSource.path.sub(/^\//, '')
         size = FastImage.size(contextSource)
       end
     end
