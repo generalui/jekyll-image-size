@@ -25,6 +25,6 @@ ENDDESC
   spec.add_dependency 'jekyll',  '>= 3.7'
   spec.add_dependency 'fastimage', '>= 1.8'
   spec.add_development_dependency "bundler", "~> 2"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
 end
