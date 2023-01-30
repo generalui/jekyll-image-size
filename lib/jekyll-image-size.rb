@@ -28,6 +28,9 @@ class ImageSizeTag < Liquid::Tag
     rawSource = source
 
     source = source.sub(/^\//, '')
+    if context
+        source = File.join(context.registers[:site].source, source)
+    end
 
     size = FastImage.size(source)
     if context && !size
